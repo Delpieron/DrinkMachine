@@ -11,7 +11,9 @@ namespace DrinkMachine
         public Water()
         {
             Name="Water";
-            
+            PriceS = 0.5f;
+            PriceB = 0.7f;
+
         }
         
 

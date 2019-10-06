@@ -7,11 +7,13 @@ namespace DrinkMachine
     {
         static void Main(string[] args)
         {
+
             string text = "Witaj";
             text.HelloText();
             bool startAgain = true;
             
             machine Machine = new machine();
+            Console.WriteLine();
             int watt = Machine.water.Count;
             int coll = Machine.cola.Count;
             int jucc = Machine.juice.Count;
@@ -47,7 +49,7 @@ namespace DrinkMachine
                             Machine.cola.Pop();
 
                             string txt = coll - Machine.cola.Count <= 4 ? "colę" : "coli";
-                            Console.WriteLine($"masz w koszyku {watt - Machine.water.Count} {txt} ");
+                            Console.WriteLine($"masz w koszyku {coll - Machine.cola.Count} {txt} ");
                         }
                         else
                         {

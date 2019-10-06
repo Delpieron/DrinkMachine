@@ -12,13 +12,11 @@ namespace DrinkMachine
         internal Stack<OrangeJuice> juice { get; set; }
         internal machine()
         {
-            
+
             water = new Stack<Water>();
             for (int i = 0; i < 10; i++)
             {
                 water.Push(new Water());
-                
-                
             }
             cola = new Stack<Cola>();
             for (int i = 0; i < 13; i++)
@@ -31,5 +29,7 @@ namespace DrinkMachine
                 juice.Push(new OrangeJuice());
             }
         }
+        //internal List<Products> prod{ get; set; }
+
     }
 }

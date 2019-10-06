@@ -10,8 +10,9 @@ namespace DrinkMachine
         public OrangeJuice()
         {
             Name = "OrangeJuice";
+            PriceS = 1f;
+            PriceB = 1.5f;
 
-            
         }
     }
 }
