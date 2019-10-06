@@ -11,10 +11,6 @@ namespace DrinkMachine
         {
             Name = "Cola";
 
-            Stack cola = new Stack();
-            cola.Push("Water");
-            cola.Push("Water");
-            cola.Push("Water");
         }
 
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DrinkMachine
 {
@@ -6,37 +7,96 @@ namespace DrinkMachine
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Wybierz co chcesz kupic");
-            Console.WriteLine("s - Orange juice");
-            Console.WriteLine("W - Water");
-            Console.WriteLine("c- Cola");
-            Water water = new Water();
+            string text = "Witaj";
+            text.HelloText();
+            bool startAgain = true;
+            
+            machine Machine = new machine();
+            int watt = Machine.water.Count;
+            int coll = Machine.cola.Count;
+            int jucc = Machine.juice.Count;
 
-            var pr = Console.ReadKey();
-            switch (pr.Key)
+
+            do
             {
-                case ConsoleKey.S:
-                    Console.WriteLine();
-                    Console.WriteLine("twoja stara");
-                    break;
-                case ConsoleKey.W:
-                    Console.WriteLine();
-                    Console.WriteLine("kupiles wode");
-                    Console.WriteLine(water.water.Count);
-                    water.water.Pop();
-                    Console.WriteLine(water.water.Count);
 
-                    break;
-                case ConsoleKey.C:
+                
+                var pr = Console.ReadKey();
+                switch (pr.Key)
+                {
+                    case ConsoleKey.W:
+                        if (Machine.water.Count > 0)
+                        {
+                            Console.WriteLine();
+                            Machine.water.Pop();
+
+                            string txt = watt - Machine.water.Count == 1 ? "wodę" : "wody";
+                            Console.WriteLine($"Masz w koszyku {watt - Machine.water.Count} {txt} ");
+                        }
+                        else
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Woda sie skonczyla");
+                        }
+                        break;
+                    case ConsoleKey.C:
+                        if (Machine.cola.Count > 0)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Kupiles cole");
+                            Machine.cola.Pop();
+
+                            string txt = coll - Machine.cola.Count <= 4 ? "colę" : "coli";
+                            Console.WriteLine($"masz w koszyku {watt - Machine.water.Count} {txt} ");
+                        }
+                        else
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Cola sie skonczyła");
+                        }
+                        break;
+                    case ConsoleKey.S:
+                        if (Machine.juice.Count > 0)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Kupiles sok");
+                            Machine.juice.Pop();
+
+                            if (jucc - Machine.juice.Count == 1 )
+                            {
+                                Console.WriteLine($"Masz w koszyku {jucc - Machine.juice.Count} sok");
+                            }
+                            else if(jucc - Machine.juice.Count < 5 )
+                                Console.WriteLine($"Masz w koszyku {jucc - Machine.juice.Count} soki");
+                            else
+                                Console.WriteLine($"Masz w koszyku {jucc - Machine.juice.Count} soków");
+
+                        }
+                        else
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Sok sie skonczyl");
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("nie mamy takiego produktu");
+                        break;
+                }
+                Console.WriteLine("wcisnij enter, aby skonczyc zakupy");
+                var next = Console.ReadKey();
+            if(next.Key == ConsoleKey.Enter)
+                {
+                    startAgain = false;
+                }
+            else
+                {
+                    startAgain = true;
                     Console.WriteLine();
-                    Console.WriteLine("C");
-                    break;
-                default:
-                    Console.WriteLine("podales zla litere baranie");
-                    break;
+                }
+
             }
-
-            Console.Read();
+            while (startAgain);
+            
 
         }
     }
